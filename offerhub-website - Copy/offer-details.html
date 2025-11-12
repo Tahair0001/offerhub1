@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offer Details - OfferHub</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-tags"></i>
+                    OfferHub
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="offers.html">Offers</a></li>
+                        <li><a href="shops.html">Shops</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="auth-buttons">
+                    <button class="btn btn-outline" onclick="window.location.href='login.html'">Log In</button>
+                    <button class="btn btn-primary" onclick="window.location.href='login.html?action=signup'">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Offer Header -->
+    <section class="offers-header">
+        <div class="container">
+            <div class="shop-breadcrumb">
+                <a href="index.html">Home</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="offers.html">Offers</a>
+                <i class="fas fa-chevron-right"></i>
+                <span id="offerTitleBreadcrumb">Offer Details</span>
+            </div>
+            
+            <h1 id="offerMainTitle">Offer Details</h1>
+            <p id="offerSubtitle">Loading offer information...</p>
+        </div>
+    </section>
+
+    <!-- Offer Content -->
+    <div class="container">
+        <div class="shop-content">
+            <!-- Main Offer Details -->
+            <div class="shop-main-content">
+                <section class="shop-section">
+                    <div class="offer-detail-header">
+                        <div id="offerImageContainer" class="offer-detail-image">
+                            <!-- Image will be loaded here -->
+                        </div>
+                        <div class="offer-detail-info">
+                            <h2 id="offerDetailTitle">Loading...</h2>
+                            <p id="offerDetailDiscount" class="offer-discount-large">Loading...</p>
+                            <p id="offerDetailShop" class="offer-shop-info">
+                                <i class="fas fa-store"></i> <span id="shopNameSpan">Loading shop...</span>
+                            </p>
+                            <p id="offerDetailLocation" class="offer-location">
+                                <i class="fas fa-map-marker-alt"></i> <span id="locationSpan">Loading location...</span>
+                            </p>
+                            <div class="offer-actions">
+                                <button class="btn btn-primary" id="getDirectionsBtn">
+                                    <i class="fas fa-directions"></i> Get Directions
+                                </button>
+                                <button class="btn btn-outline" id="saveOfferBtn">
+                                    <i class="far fa-heart"></i> Save Offer
+                                </button>
+                                <button class="btn btn-outline" id="shareOfferBtn">
+                                    <i class="fas fa-share"></i> Share
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Offer Description -->
+                <section class="shop-section">
+                    <h2>About This Offer</h2>
+                    <div id="offerDescription">
+                        <p>Loading offer description...</p>
+                    </div>
+                    <div class="offer-terms">
+                        <h3>Terms & Conditions</h3>
+                        <ul id="offerTerms">
+                            <li>Valid until the end of the month</li>
+                            <li>Cannot be combined with other offers</li>
+                            <li>Present this offer at the counter</li>
+                            <li>Subject to availability</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Shop Information -->
+                <section class="shop-section">
+                    <h2>About the Shop</h2>
+                    <div id="shopInfo">
+                        <p>Loading shop information...</p>
+                    </div>
+                    <button class="btn btn-outline" id="viewShopBtn">
+                        <i class="fas fa-external-link-alt"></i> View Shop Profile
+                    </button>
+                </section>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="shop-sidebar">
+                <!-- Quick Info -->
+                <div class="sidebar-card">
+                    <h3>Offer Details</h3>
+                    <div class="offer-meta-info">
+                        <div class="meta-item">
+                            <i class="fas fa-calendar"></i>
+                            <div>
+                                <strong>Valid Until</strong>
+                                <p id="validUntil">End of month</p>
+                            </div>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <strong>Business Hours</strong>
+                                <p id="businessHours">10:00 AM - 9:00 PM</p>
+                            </div>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fas fa-tag"></i>
+                            <div>
+                                <strong>Category</strong>
+                                <p id="offerCategory">Fashion</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Shop -->
+                <div class="sidebar-card">
+                    <h3>Contact Shop</h3>
+                    <div class="quick-actions">
+                        <button class="btn btn-primary btn-full" id="callShopBtn">
+                            <i class="fas fa-phone"></i> Call Now
+                        </button>
+                        <button class="btn btn-outline btn-full" id="messageShopBtn">
+                            <i class="fas fa-envelope"></i> Send Message
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Similar Offers -->
+                <div class="sidebar-card">
+                    <h3>Similar Offers</h3>
+                    <div id="similarOffers">
+                        <!-- Similar offers will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>OfferHub</h3>
+                    <p>Free offers and shop locally with over 10,000 stores nationwide.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="offers.html">Offers</a></li>
+                        <li><a href="shops.html">Shops</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> support@offerhub.com</li>
+                        <li><i class="fas fa-phone"></i> +91 98765 43210</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Kalaburagi, Karnataka, India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 OfferHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/offer-details.js"></script>
+</body>
+</html>

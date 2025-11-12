@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Shops - OfferHub</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-tags"></i>
+                    OfferHub
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="offers.html">Offers</a></li>
+                        <li><a href="shops.html" class="active">Shops</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="auth-buttons">
+                    <button class="btn btn-outline" onclick="window.location.href='login.html'">Log In</button>
+                    <button class="btn btn-primary" onclick="window.location.href='login.html?action=signup'">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Shops Header -->
+    <section class="shops-header">
+        <div class="container">
+            <h1>All Shops</h1>
+            <p>Discover local shops and businesses near you</p>
+            
+            <!-- Search and Filters -->
+            <div class="shops-filters">
+                <div class="search-box">
+                    <input type="text" id="shopSearch" placeholder="Search shops...">
+                    <button><i class="fas fa-search"></i></button>
+                </div>
+                <select id="categoryFilter" class="filter-select">
+                    <option value="">All Categories</option>
+                    <option value="fashion">Fashion</option>
+                    <option value="food">Food & Dining</option>
+                    <option value="electronics">Electronics</option>
+                    <option value="services">Services</option>
+                    <option value="entertainment">Entertainment</option>
+                </select>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shops Grid -->
+    <div class="container">
+        <div class="shops-grid" id="shopsGrid">
+            <!-- Shops will be loaded here -->
+        </div>
+
+        <!-- Loading State -->
+        <div id="loadingShops" class="loading-state">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Loading shops...</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>OfferHub</h3>
+                    <p>Free offers and shop locally with over 10,000 stores nationwide.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="offers.html">Offers</a></li>
+                        <li><a href="shops.html">Shops</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> support@offerhub.com</li>
+                        <li><i class="fas fa-phone"></i> +91 98765 43210</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Kalaburagi, Karnataka, India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 OfferHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/shops.js"></script>
+</body>
+</html>

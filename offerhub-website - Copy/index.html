@@ -1,0 +1,1770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OfferHub - Discover Local Deals & Discounts Near You</title>
+    <meta name="description" content="Discover amazing local deals, discounts, and offers from shops near you. Support local businesses while saving money with OfferHub.">
+    <meta name="keywords" content="local deals, discounts, offers, shopping, local business, save money">
+    <meta property="og:title" content="OfferHub - Discover Local Deals & Discounts">
+    <meta property="og:description" content="Your one-stop platform to explore shops and discounts around you">
+    <meta property="og:type" content="website">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    
+    <!-- Inline critical CSS -->
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #10b981;
+            --accent-color: #f59e0b;
+            --dark-color: #1f2937;
+            --light-color: #f9fafb;
+            --danger-color: #ef4444;
+            --success-color: #10b981;
+            --border-radius: 12px;
+            --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: var(--light-color);
+        }
+        
+        /* Header Styles */
+        header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .logo i {
+            margin-right: 0.5rem;
+            font-size: 1.8rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+        
+        nav a:hover, nav a.active {
+            background-color: rgba(37, 99, 235, 0.1);
+            color: var(--primary-color);
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 0.75rem;
+        }
+        
+        .btn {
+            padding: 0.5rem 1.25rem;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .btn-outline:hover {
+            background-color: rgba(37, 99, 235, 0.1);
+        }
+        
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), #1e40af);
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
+        .search-box {
+            display: flex;
+            background: white;
+            border-radius: 50px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+        }
+        
+        .search-btn {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .search-btn:hover {
+            background: #e69500;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            background: var(--secondary-color);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+        
+        .cta-button:hover {
+            background: #0da271;
+            transform: translateY(-2px);
+            color: white;
+        }
+        
+        .cta-button i {
+            margin-right: 0.5rem;
+        }
+        
+        /* Stats Section */
+        .stats-section {
+            padding: 4rem 0;
+            background: white;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--dark-color);
+            margin-top: 0.5rem;
+        }
+        
+        /* Offers Section */
+        .section-padding {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--dark-color);
+            margin-bottom: 1rem;
+        }
+        
+        .section-title p {
+            font-size: 1.2rem;
+            color: #6b7280;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .category-filter {
+            margin-bottom: 2rem;
+        }
+        
+        .filter-btn {
+            margin: 0.25rem;
+            border-radius: 50px;
+            padding: 0.5rem 1.25rem;
+            transition: var(--transition);
+        }
+        
+        .filter-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .loading-spinner {
+            text-align: center;
+            padding: 2rem;
+            display: none;
+        }
+        
+        .spinner {
+            border: 4px solid rgba(37, 99, 235, 0.3);
+            border-radius: 50%;
+            border-top: 4px solid var(--primary-color);
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .offer-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            height: 100%;
+        }
+        
+        .offer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        .offer-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .discount-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--danger-color);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        .offer-content {
+            padding: 1.5rem;
+        }
+        /* Offer Link Styles */
+/* Offer Link Styles */
+.offer-link {
+    color: var(--dark-color);
+    text-decoration: none;
+    transition: var(--transition);
+    display: block;
+}
+
+.offer-link:hover {
+    color: var(--primary-color);
+}
+
+.offer-card {
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+/* Prevent nested clicks */
+.offer-card button,
+.offer-card a {
+    position: relative;
+    z-index: 2;
+}
+
+/* Prevent nested clicks */
+.offer-card button,
+.offer-card a {
+    position: relative;
+    z-index: 2;
+}
+        .shop-name {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .offer-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+        
+        .price-section {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+        
+        .original-price {
+            text-decoration: line-through;
+            color: #9ca3af;
+            font-size: 1rem;
+        }
+        
+        .discounted-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        .offer-details div {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+        
+        .offer-details i {
+            margin-right: 0.5rem;
+            width: 16px;
+        }
+        
+        .directions-btn {
+            width: 100%;
+            background: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 1rem;
+        }
+        
+        .directions-btn:hover {
+            background: #0da271;
+        }
+        
+        /* Vendor Section */
+        .vendor-section {
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            padding: 5rem 0;
+        }
+        
+        .vendor-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .vendor-card h2 {
+            color: var(--dark-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .vendor-card .lead {
+            font-size: 1.1rem;
+            color: #6b7280;
+            margin-bottom: 2rem;
+        }
+        
+        .vendor-benefits {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+        
+        .vendor-benefits li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        
+        .vendor-benefits i {
+            color: var(--secondary-color);
+            margin-right: 1rem;
+            margin-top: 0.25rem;
+            font-size: 1.1rem;
+        }
+        
+        .register-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .register-btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+        
+        .register-btn i {
+            margin-right: 0.5rem;
+        }
+        
+        /* Features Section */
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            height: 100%;
+            transition: var(--transition);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-card h4 {
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+        
+        .feature-card p {
+            color: #6b7280;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.25rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-column a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-column a:hover {
+            color: white;
+        }
+        
+        .footer-column i {
+            margin-right: 0.5rem;
+            width: 16px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        
+        .social-icons a:hover {
+            background: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #9ca3af;
+        }
+        
+        /* Toast Container */
+        .toast-container {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 1050;
+            max-width: 350px;
+        }
+        
+        .custom-toast {
+            padding: 1rem 1.5rem;
+            border-radius: var(--border-radius);
+            margin-bottom: 0.75rem;
+            box-shadow: var(--box-shadow);
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            
+            .search-box {
+                flex-direction: column;
+                border-radius: var(--border-radius);
+            }
+            
+            .search-input {
+                border-radius: var(--border-radius) var(--border-radius) 0 0;
+            }
+            
+            .search-btn {
+                border-radius: 0 0 var(--border-radius) var(--border-radius);
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Focus styles for accessibility */
+        button:focus, a:focus, input:focus, select:focus, textarea:focus {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+        
+        /* Skip link for accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--primary-color);
+            color: white;
+            padding: 8px;
+            z-index: 100;
+            text-decoration: none;
+            border-radius: 0 0 4px 0;
+        }
+        
+        .skip-link:focus {
+            top: 0;
+        }
+        
+        /* Loading skeleton for better UX */
+        .skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+            border-radius: 4px;
+        }
+        
+        @keyframes loading {
+            0% {
+                background-position: 200% 0;
+            }
+            100% {
+                background-position: -200% 0;
+            }
+        }
+    </style>
+    
+    <!-- Non-critical CSS -->
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    </noscript>
+</head>
+<body>
+    <!-- Skip link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-tags" aria-hidden="true"></i>
+                    OfferHub
+                </a>
+                <nav aria-label="Main navigation">
+                    <ul>
+                        <li><a href="index.html" class="active">Home</a></li>
+                        <li><a href="offers.html">Offers</a></li>
+                        <li><a href="shops.html">Shops</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="auth-buttons">
+                    <button class="btn btn-outline" onclick="window.location.href='login.html'">Log In</button>
+                    <button class="btn btn-primary" onclick="window.location.href='login.html?action=signup'">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section" aria-labelledby="hero-heading">
+            <div class="container">
+                <div class="hero-content">
+                    <h1 id="hero-heading">Discover Amazing Deals Near You</h1>
+                    <p>Your one-stop platform to explore shops and discounts around you</p>
+                    
+                    <div class="search-container">
+                        <div class="search-box">
+                            <input type="text" class="search-input" placeholder="Search for shops, deals, or categories..." id="searchInput" aria-label="Search for deals">
+                            <button class="search-btn" id="searchBtn">
+                                <i class="fas fa-search" aria-hidden="true"></i> Search
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <a href="#offers" class="cta-button">
+                        <i class="fas fa-compass" aria-hidden="true"></i> Explore Deals Now
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Offers Section -->
+        <!-- Offers Section -->
+<section id="offers" class="section-padding" aria-labelledby="offers-heading">
+    <div class="container">
+        <div class="section-title">
+            <h2 id="offers-heading">Featured Deals Today</h2>
+            <p>Don't miss these amazing offers from local vendors</p>
+        </div>
+        
+        <!-- Category Filter -->
+        <div class="category-filter text-center">
+            <h3 class="h5 mb-3">Filter by Category:</h3>
+            <div role="group" aria-label="Filter deals by category">
+                <button class="btn filter-btn active" data-category="all">All Categories</button>
+                <button class="btn filter-btn" data-category="food">Food & Dining</button>
+                <button class="btn filter-btn" data-category="fashion">Fashion & Clothing</button>
+                <button class="btn filter-btn" data-category="electronics">Electronics</button>
+                <button class="btn filter-btn" data-category="books">Books & Education</button>
+                <button class="btn filter-btn" data-category="beverages">Beverages</button>
+                <button class="btn filter-btn" data-category="health">Health & Beauty</button>
+            </div>
+        </div>
+
+        <!-- Loading Spinner -->
+        <div class="loading-spinner" id="loadingSpinner">
+            <div class="spinner" aria-label="Loading deals"></div>
+            <p class="mt-2">Loading deals...</p>
+        </div>
+
+        <!-- Offers Container -->
+        <div class="row" id="offersContainer" aria-live="polite">
+            <!-- Offers will be loaded here dynamically -->
+        </div>
+        
+        <div class="text-center mt-5">
+            <button class="btn btn-outline-primary btn-lg" id="loadMoreBtn" style="border-radius: 50px; padding: 12px 40px;">
+                <i class="fas fa-plus" aria-hidden="true"></i> Load More Deals
+            </button>
+        </div>
+
+        <!-- NEW: View All Offers Button -->
+        <div class="text-center mt-4">
+            <a href="offers.html" class="btn btn-primary btn-lg" style="border-radius: 50px; padding: 12px 40px;">
+                <i class="fas fa-list" aria-hidden="true"></i> View All Offers
+            </a>
+            <p class="text-muted mt-2">Explore our complete collection of deals and discounts</p>
+        </div>
+    </div>
+</section>
+        <!-- Stats Section -->
+        <section class="stats-section" aria-labelledby="stats-heading">
+            <div class="container">
+                <h2 id="stats-heading" class="visually-hidden">Our Impact</h2>
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="150">0</span>
+                            <div class="stat-label">Local Vendors</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="500">0</span>
+                            <div class="stat-label">Active Deals</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="2500">0</span>
+                            <div class="stat-label">Happy Customers</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="stat-item">
+                            <span class="stat-number" data-count="75">0</span>
+                            <div class="stat-label">Thousand Saved (₹)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Vendor Section -->
+        <section id="vendors" class="vendor-section" aria-labelledby="vendors-heading">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 mb-4 mb-lg-0">
+                        <div class="vendor-card">
+                            <h2 id="vendors-heading">Are You a Local Vendor?</h2>
+                            <p class="lead">Join OfferHub and reach more customers in your area. Boost your sales by showcasing your best deals to local shoppers.</p>
+                            
+                            <ul class="vendor-benefits">
+                                <li>
+                                    <i class="fas fa-rocket" aria-hidden="true"></i>
+                                    <span><strong>Quick Setup</strong> - Get started in just 5 minutes</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-users" aria-hidden="true"></i>
+                                    <span><strong>Reach Local Customers</strong> - Connect with nearby shoppers</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-chart-line" aria-hidden="true"></i>
+                                    <span><strong>Boost Sales</strong> - Increase footfall and revenue</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-mobile-alt" aria-hidden="true"></i>
+                                    <span><strong>Easy Management</strong> - Simple dashboard to manage offers</span>
+                                </li>
+                                <li>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <span><strong>Free to Start</strong> - No setup fees, pay only for premium features</span>
+                                </li>
+                            </ul>
+                            
+                            <div class="mt-4">
+                                <button class="register-btn" onclick="openVendorModal()">
+                                    <i class="fas fa-store" aria-hidden="true"></i> Register Your Shop Now
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+    <div class="text-center">
+        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="img-fluid rounded shadow-lg" alt="Vendor Dashboard interface showing analytics charts, offer management, and business performance metrics" loading="lazy" style="border-radius: 20px;">
+        <div class="mt-3">
+            <small class="text-muted">Real vendor dashboard with analytics and offer management tools</small>
+        </div>
+    </div>
+</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="section-padding" id="features" aria-labelledby="features-heading">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="features-heading">Why Choose OfferHub?</h2>
+                    <p>Connecting local businesses with smart shoppers</p>
+                </div>
+                
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-card">
+                            <i class="fas fa-map-marker-alt feature-icon" aria-hidden="true"></i>
+                            <h4>Location-Based Deals</h4>
+                            <p>Find amazing discounts from shops near your location. No more missing out on great deals in your neighborhood!</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-card">
+                            <i class="fas fa-clock feature-icon" aria-hidden="true"></i>
+                            <h4>Real-Time Updates</h4>
+                            <p>Get instant notifications about new offers and limited-time discounts before they expire. Never miss a deal again!</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-card">
+                            <i class="fas fa-tags feature-icon" aria-hidden="true"></i>
+                            <h4>Best Prices</h4>
+                            <p>Compare prices and find the best deals across multiple categories - food, electronics, fashion & more.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-card">
+                            <i class="fas fa-mobile-alt feature-icon" aria-hidden="true"></i>
+                            <h4>Easy to Use</h4>
+                            <p>Simple, intuitive interface that makes finding and saving on local deals effortless for everyone.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-card">
+                            <i class="fas fa-heart feature-icon" aria-hidden="true"></i>
+                            <h4>Support Local Business</h4>
+                            <p>Help local vendors reach more customers while you discover amazing deals in your community.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="feature-card">
+                            <i class="fas fa-shield-alt feature-icon" aria-hidden="true"></i>
+                            <h4>Verified Deals</h4>
+                            <p>All offers are verified and updated regularly to ensure you get authentic deals from trusted vendors.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- About Section -->
+        <section id="about" class="section-padding" style="background: white;" aria-labelledby="about-heading">
+            <div class="container">
+                <div class="section-title">
+                    <h2 id="about-heading">About OfferHub</h2>
+                    <p>Built by students, for the community</p>
+                </div>
+                
+                <div class="row align-items-center">
+                    <div class="col-lg-6 mb-4 mb-lg-0">
+                        <h3>Our Mission</h3>
+                        <p class="lead mb-4">To bridge the gap between local businesses and customers by creating a seamless platform where everyone benefits - vendors increase their reach and customers discover amazing local deals.</p>
+                        
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="text-center p-3">
+                                    <i class="fas fa-handshake fa-3x text-primary mb-2" aria-hidden="true"></i>
+                                    <h5>Community First</h5>
+                                    <p>Supporting local businesses</p>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="text-center p-3">
+                                    <i class="fas fa-lightbulb fa-3x text-warning mb-2" aria-hidden="true"></i>
+                                    <h5>Innovation</h5>
+                                    <p>Smart solutions for everyone</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+    <div class="text-center">
+        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" class="img-fluid rounded shadow" alt="Our diverse team collaborating on a project, working together around a table with laptops and notebooks" loading="lazy" style="border-radius: 20px;">
+        <div class="mt-3">
+            <small class="text-muted">The OfferHub team - passionate students building solutions for our community</small>
+        </div>
+    </div>
+</div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>OfferHub</h3>
+                    <p>Free offers and shop locally with over 10,000 stores nationwide.</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="offers.html">Offers</a></li>
+                        <li><a href="shops.html">Shops</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope" aria-hidden="true"></i> support@offerhub.com</li>
+                        <li><i class="fas fa-phone" aria-hidden="true"></i> +91 98765 43210</li>
+                        <li><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Kalaburagi, Karnataka, India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 OfferHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Vendor Registration Modal -->
+    <div class="modal fade" id="vendorModal" tabindex="-1" aria-labelledby="vendorModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content" style="border-radius: 20px; border: none;">
+                <div class="modal-header" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; border-radius: 20px 20px 0 0;">
+                    <h5 class="modal-title" id="vendorModalLabel">Register Your Shop</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form id="vendorForm">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="shopName" class="form-label">Shop Name *</label>
+                                <input type="text" class="form-control" id="shopName" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="ownerName" class="form-label">Owner Name *</label>
+                                <input type="text" class="form-control" id="ownerName" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="phone" class="form-label">Phone Number *</label>
+                                <input type="tel" class="form-control" id="phone" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="vendorEmail" class="form-label">Email *</label>
+                                <input type="email" class="form-control" id="vendorEmail" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Shop Address *</label>
+                            <textarea class="form-control" id="address" rows="2" required></textarea>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="category" class="form-label">Business Category *</label>
+                                <select class="form-control" id="category" required>
+                                    <option value="">Select Category</option>
+                                    <option value="food">Food & Dining</option>
+                                    <option value="fashion">Fashion & Clothing</option>
+                                    <option value="electronics">Electronics</option>
+                                    <option value="books">Books & Education</option>
+                                    <option value="beverages">Beverages</option>
+                                    <option value="health">Health & Beauty</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="openHours" class="form-label">Opening Hours</label>
+                                <input type="text" class="form-control" id="openHours" placeholder="9:00 AM - 9:00 PM">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Shop Description</label>
+                            <textarea class="form-control" id="description" rows="3" placeholder="Brief description of your business..."></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="submitVendor">Register Shop</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Add to all pages -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/script.js"></script>
+
+    <!-- Homepage Specific JavaScript -->
+    <script>
+    // Toast Container
+    const toastContainer = document.createElement('div');
+    toastContainer.className = 'toast-container';
+    toastContainer.id = 'toastContainer';
+    document.body.appendChild(toastContainer);
+
+    // Global variables for homepage
+    let currentOffers = [];
+    let allOffers = []; // Store all original offers
+    let displayedOffers = 0;
+    const offersPerLoad = 6;
+    let searchTimeout;
+
+    // DOM elements
+    const offersContainer = document.getElementById('offersContainer');
+    const loadingSpinner = document.getElementById('loadingSpinner');
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
+    const searchInput = document.getElementById('searchInput');
+    const searchBtn = document.getElementById('searchBtn');
+
+    // Initialize the homepage
+    document.addEventListener('DOMContentLoaded', function() {
+        loadInitialOffers();
+        initializeEventListeners();
+        initializeStats();
+        checkAuthStatus();
+    });
+
+    // Load initial offers from Supabase
+    async function loadInitialOffers() {
+        showLoading();
+        // Show skeleton loading
+        showSkeletonLoading();
+        
+        try {
+            const offers = await loadOffersFromSupabase();
+            currentOffers = offers;
+            allOffers = offers; // Store original offers
+            loadOffers(offersPerLoad);
+            hideLoading();
+        } catch (error) {
+            console.error('Error loading offers:', error);
+            showToast('Failed to load offers. Please try again.', 'danger');
+            hideLoading();
+        }
+    }
+
+    // Show skeleton loading
+    function showSkeletonLoading() {
+        offersContainer.innerHTML = '';
+        for (let i = 0; i < offersPerLoad; i++) {
+            const colDiv = document.createElement('div');
+            colDiv.className = 'col-lg-4 col-md-6 mb-4';
+            colDiv.innerHTML = `
+                <div class="offer-card">
+                    <div class="offer-image skeleton" style="height: 200px;"></div>
+                    <div class="offer-content">
+                        <div class="skeleton" style="height: 20px; width: 60%; margin-bottom: 10px;"></div>
+                        <div class="skeleton" style="height: 24px; width: 90%; margin-bottom: 15px;"></div>
+                        <div class="skeleton" style="height: 30px; width: 80%; margin-bottom: 15px;"></div>
+                        <div class="skeleton" style="height: 16px; width: 100%; margin-bottom: 8px;"></div>
+                        <div class="skeleton" style="height: 16px; width: 100%; margin-bottom: 8px;"></div>
+                        <div class="skeleton" style="height: 16px; width: 70%; margin-bottom: 15px;"></div>
+                        <div class="skeleton" style="height: 40px; width: 100%;"></div>
+                    </div>
+                </div>
+            `;
+            offersContainer.appendChild(colDiv);
+        }
+    }
+
+    // Load offers from Supabase
+    async function loadOffersFromSupabase() {
+        try {
+            const connectionTest = await window.supabaseClient.testConnection();
+            if (!connectionTest) {
+                console.log('Supabase connection failed, using demo data');
+                return getDemoOffers();
+            }
+            
+            const { data, error } = await window.supabaseClient.data.getOffers();
+            
+            if (error || !data || data.length === 0) {
+                console.log('No offers found in database, using demo data');
+                return getDemoOffers();
+            }
+            
+            // Transform the data for homepage display
+            const transformedOffers = data.map(offer => ({
+                id: offer.id,
+                shopName: offer.shops?.name || 'Local Shop',
+                item: offer.title || 'Special Offer',
+                originalPrice: Math.floor(Math.random() * 1000) + 200,
+                discountedPrice: Math.floor(Math.random() * 500) + 100,
+                discount: Math.floor(Math.random() * 50) + 10,
+                category: offer.category || 'general',
+                address: offer.shops?.location || 'Kalaburagi',
+                phone: '+91 98765 43210',
+                validUntil: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+                description: offer.description || 'Great deal available now!',
+                image: offer.image_url || 'https://via.placeholder.com/400x250/2563eb/ffffff?text=Special+Offer',
+                rating: 4.0 + Math.random(),
+                reviews: Math.floor(Math.random() * 100) + 20
+            }));
+            
+            return transformedOffers;
+            
+        } catch (error) {
+            console.error('Error loading offers:', error);
+            return getDemoOffers();
+        }
+    }
+
+    // Demo offers fallback - UPDATE THESE IDs TO MATCH
+// Demo offers fallback - UPDATED TO MATCH offer-details.js
+function getDemoOffers() {
+    return [
+        {
+            id: 1,
+            shopName: "Fashion Street",
+            item: "Summer Collection Discount",
+            originalPrice: 999,
+            discountedPrice: 599,
+            discount: 40,
+            category: "fashion",
+            address: "Kalaburagi Main Road",
+            phone: "+91 98765 43210",
+            validUntil: "2024-02-20",
+            description: "Latest fashion trends with amazing discounts",
+            image: "https://via.placeholder.com/400x250/2563eb/ffffff?text=Fashion+Street",
+            rating: 4.5,
+            reviews: 128
+        },
+        {
+            id: 2,
+            shopName: "Food Paradise",
+            item: "Delicious Meal Combo",
+            originalPrice: 450,
+            discountedPrice: 299,
+            discount: 34,
+            category: "food",
+            address: "Near College Campus",
+            phone: "+91 98765 43211",
+            validUntil: "2024-02-25",
+            description: "Tasty food with great ambiance",
+            image: "https://via.placeholder.com/400x250/f97316/ffffff?text=Food+Paradise",
+            rating: 4.3,
+            reviews: 89
+        },
+        {
+            id: 3,
+            shopName: "Electro World",
+            item: "Smartphone Discount",
+            originalPrice: 15999,
+            discountedPrice: 12999,
+            discount: 19,
+            category: "electronics",
+            address: "City Center Mall",
+            phone: "+91 98765 43212",
+            validUntil: "2024-02-28",
+            description: "Latest smartphones at discounted prices",
+            image: "https://via.placeholder.com/400x250/8b5cf6/ffffff?text=Electro+World",
+            rating: 4.7,
+            reviews: 215
+        },
+        {
+            id: 4,
+            shopName: "Funn-Offer",
+            item: "All Games Discount",
+            originalPrice: 1200,
+            discountedPrice: 799,
+            discount: 33,
+            category: "entertainment", // Changed to match offer-details.js
+            address: "Entertainment Zone",
+            phone: "+91 98765 43213",
+            validUntil: "2024-03-05",
+            description: "Exciting games and entertainment offers",
+            image: "https://via.placeholder.com/400x250/10b981/ffffff?text=Funn-Offer",
+            rating: 4.4,
+            reviews: 76
+        },
+        {
+            id: 5,
+            shopName: "Sports Zone",
+            item: "Sports Gear Sale",
+            originalPrice: 2000,
+            discountedPrice: 1500,
+            discount: 25,
+            category: "sports", // Changed to match offer-details.js
+            address: "Sports Complex",
+            phone: "+91 98765 43214",
+            validUntil: "2024-02-22",
+            description: "Premium sports equipment at great prices",
+            image: "https://via.placeholder.com/400x250/f59e0b/ffffff?text=Sports+Zone",
+            rating: 4.2,
+            reviews: 142
+        }
+    ];
+}
+
+    // Load offers with pagination
+    function loadOffers(count) {
+        offersContainer.innerHTML = '';
+        
+        const offersToShow = currentOffers.slice(displayedOffers, displayedOffers + count);
+        
+        if (offersToShow.length === 0) {
+            offersContainer.innerHTML = `
+                <div class="col-12 text-center">
+                    <div class="alert alert-info" style="border-radius: 15px;">
+                        <i class="fas fa-filter fa-2x mb-3 d-block"></i>
+                        <h5>No more offers to show</h5>
+                        <p>Check back later for new deals!</p>
+                    </div>
+                </div>
+            `;
+            return;
+        }
+        
+        offersToShow.forEach(offer => {
+            const offerCard = createOfferCard(offer);
+            offersContainer.appendChild(offerCard);
+        });
+
+        displayedOffers += count;
+        
+        if (displayedOffers >= currentOffers.length) {
+            loadMoreBtn.style.display = 'none';
+        } else {
+            loadMoreBtn.style.display = 'block';
+        }
+    }
+
+// Create offer card element
+function createOfferCard(offer) {
+    const colDiv = document.createElement('div');
+    colDiv.className = 'col-lg-4 col-md-6 mb-4';
+    
+    const validUntil = new Date(offer.validUntil);
+    const today = new Date();
+    const daysLeft = Math.ceil((validUntil - today) / (1000 * 60 * 60 * 24));
+    
+    colDiv.innerHTML = `
+        <div class="offer-card" data-category="${offer.category}">
+            <div class="offer-image" style="background-image: url('${offer.image}');" role="img" aria-label="${offer.item} from ${offer.shopName}">
+                <div class="discount-badge">${offer.discount}% OFF</div>
+            </div>
+            <div class="offer-content">
+                <div class="shop-name">${offer.shopName}</div>
+                <div class="offer-title">
+                    <a href="offer-details.html?id=${offer.id}" class="offer-link" aria-label="View details for ${offer.item}">
+                        ${offer.item}
+                    </a>
+                </div>
+                
+                <div class="price-section">
+                    <span class="original-price">₹${offer.originalPrice}</span>
+                    <span class="discounted-price">₹${offer.discountedPrice}</span>
+                </div>
+                
+                <div class="offer-details mb-2">
+                    <div class="mb-1">
+                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                        <span>${offer.address}</span>
+                    </div>
+                    <div class="mb-1">
+                        <i class="fas fa-phone" aria-hidden="true"></i>
+                        <span>${offer.phone}</span>
+                    </div>
+                    <div class="mb-1">
+                        <i class="fas fa-clock" aria-hidden="true"></i>
+                        <span>Valid for ${daysLeft > 0 ? daysLeft + ' days' : 'Expires today!'}</span>
+                    </div>
+                    <div class="mb-2">
+                        <i class="fas fa-star text-warning" aria-hidden="true"></i>
+                        <span>${offer.rating.toFixed(1)} (${offer.reviews} reviews)</span>
+                    </div>
+                </div>
+                
+                <p class="text-muted mb-3" style="font-size: 0.9rem;">${offer.description}</p>
+                
+                <div class="d-flex gap-2">
+                    <button class="directions-btn flex-grow-1" onclick="getDirections('${offer.shopName}', '${offer.address}')" aria-label="Get directions to ${offer.shopName}">
+                        <i class="fas fa-directions" aria-hidden="true"></i> Get Directions
+                    </button>
+                    <a href="offer-details.html?id=${offer.id}" class="btn btn-primary" style="border-radius: var(--border-radius); padding: 0.75rem 1rem;" aria-label="View details for ${offer.item}">
+                        <i class="fas fa-eye" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    // Make entire card clickable (optional)
+    const offerCard = colDiv.querySelector('.offer-card');
+    offerCard.style.cursor = 'pointer';
+    offerCard.addEventListener('click', function(e) {
+        // Don't trigger if user clicked on buttons or links
+        if (!e.target.closest('button') && !e.target.closest('a')) {
+            window.location.href = `offer-details.html?id=${offer.id}`;
+        }
+    });
+    
+    return colDiv;
+}
+
+    // Show/Hide loading
+    function showLoading() {
+        if (loadingSpinner) loadingSpinner.style.display = 'block';
+    }
+
+    function hideLoading() {
+        if (loadingSpinner) loadingSpinner.style.display = 'none';
+    }
+
+    // Initialize event listeners
+    function initializeEventListeners() {
+        // Load more button
+        if (loadMoreBtn) {
+            loadMoreBtn.addEventListener('click', function() {
+                showLoading();
+                setTimeout(() => {
+                    loadOffers(offersPerLoad);
+                    hideLoading();
+                }, 800);
+            });
+        }
+
+        // Search functionality with debouncing
+        if (searchBtn && searchInput) {
+            searchBtn.addEventListener('click', performSearch);
+            searchInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    performSearch();
+                }
+            });
+            
+            // Real-time search with debouncing
+            searchInput.addEventListener('input', function() {
+                clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(() => {
+                    if (this.value.length > 0) {
+                        performSearch();
+                    } else {
+                        // If search is cleared, show all offers
+                        displayedOffers = 0;
+                        currentOffers = allOffers;
+                        loadOffers(offersPerLoad);
+                    }
+                }, 500);
+            });
+        }
+
+        // Category filters
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                const category = this.dataset.category;
+                filterOffersByCategory(category);
+            });
+        });
+
+        // Vendor form submission
+        const submitVendorBtn = document.getElementById('submitVendor');
+        if (submitVendorBtn) {
+            submitVendorBtn.addEventListener('click', function() {
+                handleVendorRegistration();
+            });
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId !== '#') {
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        const offsetTop = targetSection.offsetTop - 80;
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Update URL without page reload
+                        history.pushState(null, null, targetId);
+                    }
+                }
+            });
+        });
+    }
+
+    // Perform search - FILTERS ON HOMEPAGE
+    function performSearch() {
+        const searchTerm = searchInput.value.toLowerCase().trim();
+        
+        if (!searchTerm) {
+            // If no search term, show all offers
+            displayedOffers = 0;
+            currentOffers = allOffers;
+            loadOffers(offersPerLoad);
+            return;
+        }
+
+        showLoading();
+        
+        setTimeout(() => {
+            // Filter offers based on search term
+            const filteredOffers = allOffers.filter(offer => 
+                offer.shopName.toLowerCase().includes(searchTerm) ||
+                offer.item.toLowerCase().includes(searchTerm) ||
+                offer.description.toLowerCase().includes(searchTerm) ||
+                offer.category.toLowerCase().includes(searchTerm)
+            );
+            
+            displayedOffers = 0;
+            currentOffers = filteredOffers;
+            
+            if (filteredOffers.length === 0) {
+                offersContainer.innerHTML = `
+                    <div class="col-12 text-center">
+                        <div class="alert alert-info" style="border-radius: 15px;">
+                            <i class="fas fa-search fa-2x mb-3 d-block"></i>
+                            <h5>No offers found for "${searchTerm}"</h5>
+                            <p>Try searching with different keywords or browse all categories.</p>
+                            <button class="btn btn-primary mt-2" onclick="clearSearch()">Show All Offers</button>
+                        </div>
+                    </div>
+                `;
+                if (loadMoreBtn) loadMoreBtn.style.display = 'none';
+            } else {
+                loadOffers(offersPerLoad);
+                showToast(`Found ${filteredOffers.length} offers for "${searchTerm}"`, 'success');
+            }
+            
+            hideLoading();
+        }, 500);
+    }
+
+    // Clear search and show all offers
+    function clearSearch() {
+        searchInput.value = '';
+        displayedOffers = 0;
+        currentOffers = allOffers;
+        loadOffers(offersPerLoad);
+        
+        // Reset category filter to "All"
+        const allCategoryBtn = document.querySelector('[data-category="all"]');
+        if (allCategoryBtn) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            allCategoryBtn.classList.add('active');
+        }
+    }
+
+    // Filter by category
+    function filterOffersByCategory(category) {
+        showLoading();
+        
+        setTimeout(() => {
+            let filteredOffers;
+            if (category === 'all') {
+                filteredOffers = allOffers; // Use all original offers
+            } else {
+                filteredOffers = allOffers.filter(offer => offer.category === category);
+            }
+            
+            // Apply search filter if there's a search term
+            const searchTerm = searchInput.value.toLowerCase().trim();
+            if (searchTerm) {
+                filteredOffers = filteredOffers.filter(offer => 
+                    offer.shopName.toLowerCase().includes(searchTerm) ||
+                    offer.item.toLowerCase().includes(searchTerm) ||
+                    offer.description.toLowerCase().includes(searchTerm)
+                );
+            }
+            
+            displayedOffers = 0;
+            currentOffers = filteredOffers;
+            
+            if (filteredOffers.length === 0) {
+                offersContainer.innerHTML = `
+                    <div class="col-12 text-center">
+                        <div class="alert alert-info" style="border-radius: 15px;">
+                            <i class="fas fa-filter fa-2x mb-3 d-block"></i>
+                            <h5>No offers found</h5>
+                            <p>No offers match your current filters. Try clearing your search or selecting a different category.</p>
+                            <button class="btn btn-primary mt-2" onclick="clearSearch()">Show All Offers</button>
+                        </div>
+                    </div>
+                `;
+                if (loadMoreBtn) loadMoreBtn.style.display = 'none';
+            } else {
+                loadOffers(offersPerLoad);
+            }
+            
+            hideLoading();
+        }, 500);
+    }
+
+    // Get directions - make it globally accessible
+    window.getDirections = function(shopName, address) {
+        const encodedAddress = encodeURIComponent(address);
+        const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
+        
+        showToast(`Opening directions to ${shopName}...`, 'info');
+        setTimeout(() => {
+            window.open(mapsUrl, '_blank');
+        }, 1000);
+    };
+
+    // Open vendor modal
+    function openVendorModal() {
+        const vendorModal = new bootstrap.Modal(document.getElementById('vendorModal'));
+        vendorModal.show();
+    }
+
+    // Handle vendor registration
+    function handleVendorRegistration() {
+        const shopName = document.getElementById('shopName').value;
+        const ownerName = document.getElementById('ownerName').value;
+        const phone = document.getElementById('phone').value;
+        const email = document.getElementById('vendorEmail').value;
+        const address = document.getElementById('address').value;
+        const category = document.getElementById('category').value;
+
+        if (!shopName || !ownerName || !phone || !email || !address || !category) {
+            showToast('Please fill all required fields', 'warning');
+            return;
+        }
+
+        // Validate email format
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(email)) {
+            showToast('Please enter a valid email address', 'warning');
+            return;
+        }
+
+        // Validate phone number (Indian format)
+        const phoneRegex = /^[6-9]\d{9}$/;
+        if (!phoneRegex.test(phone.replace(/\D/g, ''))) {
+            showToast('Please enter a valid Indian phone number', 'warning');
+            return;
+        }
+
+        console.log('Vendor Registration:', { shopName, ownerName, phone, email, address, category });
+        
+        showToast('Registration successful! Our team will contact you soon.', 'success');
+        
+        setTimeout(() => {
+            const modal = bootstrap.Modal.getInstance(document.getElementById('vendorModal'));
+            if (modal) modal.hide();
+            
+            // Reset form
+            document.getElementById('vendorForm').reset();
+        }, 2000);
+    }
+
+    // Show toast notification
+    function showToast(message, type = 'info') {
+        const toastContainer = document.getElementById('toastContainer');
+        const toastId = 'toast-' + Date.now();
+        
+        const bgColor = {
+            'success': '#10b981',
+            'warning': '#f59e0b',
+            'danger': '#ef4444',
+            'info': '#2563eb'
+        }[type] || '#2563eb';
+
+        const icon = {
+            'success': 'check-circle',
+            'warning': 'exclamation-triangle',
+            'danger': 'exclamation-circle',
+            'info': 'info-circle'
+        }[type] || 'info-circle';
+
+        const toast = document.createElement('div');
+        toast.id = toastId;
+        toast.className = 'custom-toast';
+        toast.style.background = bgColor;
+        toast.style.color = 'white';
+        toast.setAttribute('role', 'alert');
+        toast.setAttribute('aria-live', 'assertive');
+        toast.innerHTML = `
+            <div class="d-flex align-items-center">
+                <i class="fas fa-${icon} me-2" aria-hidden="true"></i>
+                <span>${message}</span>
+            </div>
+        `;
+
+        toastContainer.appendChild(toast);
+
+        setTimeout(() => {
+            toast.style.opacity = '0';
+            setTimeout(() => {
+                if (toast.parentNode) {
+                    toast.parentNode.removeChild(toast);
+                }
+            }, 300);
+        }, 3000);
+    }
+
+    // Initialize stats counter animation
+    function initializeStats() {
+        const statNumbers = document.querySelectorAll('.stat-number');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = parseInt(entry.target.dataset.count);
+                    animateCounter(entry.target, target);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        statNumbers.forEach(stat => observer.observe(stat));
+    }
+
+    // Animate counter
+    function animateCounter(element, target) {
+        let current = 0;
+        const increment = target / 50;
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                element.textContent = target;
+                clearInterval(timer);
+            } else {
+                element.textContent = Math.floor(current);
+            }
+        }, 30);
+    }
+
+    // Authentication status is handled by common.js
+
+    // Utility function for visually hidden content
+    function createVisuallyHiddenStyles() {
+        if (!document.querySelector('#visually-hidden-styles')) {
+            const style = document.createElement('style');
+            style.id = 'visually-hidden-styles';
+            style.textContent = `
+                .visually-hidden {
+                    position: absolute !important;
+                    width: 1px !important;
+                    height: 1px !important;
+                    padding: 0 !important;
+                    margin: -1px !important;
+                    overflow: hidden !important;
+                    clip: rect(0, 0, 0, 0) !important;
+                    white-space: nowrap !important;
+                    border: 0 !important;
+                }
+            `;
+            document.head.appendChild(style);
+        }
+    }
+
+    // Initialize visually hidden utility
+    createVisuallyHiddenStyles();
+</script>
+</body>
+</html>

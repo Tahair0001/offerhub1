@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Supabase Test</title>
+</head>
+<body>
+    <h1>Supabase Connection Test</h1>
+    <div id="result">Testing...</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        // Test Supabase connection
+        async function testConnection() {
+            const SUPABASE_URL = 'https://xqgmejicgtmftuhtyuwr.supabase.co';
+            const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhxZ21lamljZ3RtZnR1aHR5dXdyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjI1MTMxNTEsImV4cCI6MjA3ODA4OTE1MX0.GO1YOiPnrJv_2sPSNp9OSCML5yYR_mLv9OAri_OEg-A';
+            
+            try {
+                // Create Supabase client
+                const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+                console.log('Supabase client created');
+                
+                // Test a simple query
+                const { data, error } = await supabase
+                    .from('shops')
+                    .select('*')
+                    .limit(2);
+                
+                if (error) {
+                    document.getElementById('result').innerHTML = 
+                        `Error: ${error.message}`;
+                    console.error('Query error:', error);
+                } else {
+                    document.getElementById('result').innerHTML = 
+                        `Success! Found ${data.length} shops. Connection working!`;
+                    console.log('Data:', data);
+                }
+            } catch (err) {
+                document.getElementById('result').innerHTML = 
+                    `Connection failed: ${err.message}`;
+                console.error('Connection error:', err);
+            }
+        }
+        
+        // Run test when page loads
+        testConnection();
+    </script>
+</body>
+</html>

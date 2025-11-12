@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop Dashboard - OfferHub</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-tags"></i>
+                    OfferHub
+                </a>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="offers.html">Offers</a></li>
+                        <li><a href="shop-dashboard.html" class="active">Dashboard</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="auth-buttons">
+                    <span class="user-welcome">Loading...</span>
+                    <button class="btn btn-outline" id="logoutBtn">Log Out</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Header -->
+    <section class="dashboard-header">
+        <div class="container">
+            <h1>Dashboard</h1>
+            <p>Manage your shop and offers easily</p>
+        </div>
+    </section>
+
+    <!-- Shop Info Section -->
+    <div class="container">
+        <div class="shop-info-card">
+            <div class="shop-header">
+                <div class="shop-details">
+                    <h2>Fashion Street</h2>
+                    <p><i class="fas fa-map-marker-alt"></i> Kalaburagi, Karnataka</p>
+                </div>
+                <button class="btn btn-outline" id="editShopBtn">
+                    <i class="fas fa-edit"></i> Edit Shop Info
+                </button>
+            </div>
+        </div>
+
+        <!-- Add New Offer Form -->
+        <div class="dashboard-section">
+            <h2>Add New Offer</h2>
+            <form class="offer-form" id="offerForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="offerTitle">Offer Title</label>
+                        <input type="text" id="offerTitle" placeholder="Enter offer title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="offerDiscount">Discount</label>
+                        <input type="text" id="offerDiscount" placeholder="e.g., 40% Off" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="offerDescription">Description</label>
+                    <textarea id="offerDescription" placeholder="Enter description..." rows="3"></textarea>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="offerImage">Upload Image</label>
+                        <div class="image-upload">
+                            <input type="file" id="offerImage" accept="image/*">
+                            <label for="offerImage" class="upload-btn">
+                                <i class="fas fa-cloud-upload-alt"></i> Choose Image
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="locationUrl">Location URL</label>
+                        <input type="url" id="locationUrl" placeholder="Paste location URL">
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> Submit Offer
+                </button>
+            </form>
+        </div>
+
+        <!-- Existing Offers Section -->
+        <div class="dashboard-section">
+            <div class="section-header">
+                <h2>Your Offers</h2>
+                <span class="offers-count">4 active offers</span>
+            </div>
+            
+            <div class="offers-table-container">
+                <table class="offers-table" id="offersTable">
+                    <thead>
+                        <tr>
+                            <th>Offer Title</th>
+                            <th>Discount</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Offers will be loaded by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>OfferHub</h3>
+                    <p>Free offers and shop locally with over 10,000 stores nationwide.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="offers.html">Offers</a></li>
+                        <li><a href="shops.html">Shops</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> support@offerhub.com</li>
+                        <li><i class="fas fa-phone"></i> +91 98765 43210</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Kalaburagi, Karnataka, India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 OfferHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

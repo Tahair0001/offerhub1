@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automotive Service Center - OfferHub</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">
+                    <i class="fas fa-tags"></i>
+                    OfferHub
+                </a>
+<nav>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="offers.html">Offers</a></li>
+        <li><a href="shops.html">Shops</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+</nav>
+                <div class="auth-buttons">
+    <button class="btn btn-outline" onclick="window.location.href='login.html'">Log In</button>
+    <button class="btn btn-primary" onclick="window.location.href='login.html?action=signup'">Sign Up</button>
+</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Shop Header -->
+    <section class="shop-header">
+    <div class="container">
+        <div class="shop-breadcrumb">
+            <a href="offers.html">Offers</a>
+            <i class="fas fa-chevron-right"></i>
+            <span id="shopNameBreadcrumb">Loading...</span>
+        </div>
+        
+        <div class="shop-main-info">
+            <div class="shop-title-section">
+                <h1 id="shopName">Loading...</h1>
+                <div class="shop-location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span id="shopLocation">Loading...</span>
+                </div>
+                <div class="shop-rating">
+                    <div class="stars" id="shopStars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <span class="rating-text" id="shopRatingText">Loading reviews...</span>
+                </div>
+            </div>
+            
+            <div class="shop-actions">
+                <button class="btn btn-primary" id="getDirectionsBtn">
+                    <i class="fas fa-directions"></i> Get Directions
+                </button>
+                <button class="btn btn-outline" id="saveShopBtn">
+                    <i class="far fa-heart"></i> Save Shop
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Shop Content -->
+    <div class="container">
+        <div class="shop-content">
+            <!-- Main Content Column -->
+            <div class="shop-main-content">
+                <!-- About Section -->
+                <section class="shop-section">
+    <h2>About the Shop</h2>
+    <p id="shopDescription">Loading shop description...</p>
+</section>
+
+                <!-- Opening Hours -->
+                <section class="shop-section">
+                    <h2>Opening Hours</h2>
+                    <div class="opening-hours">
+                        <div class="hour-row">
+                            <span class="day">Monday - Friday</span>
+                            <span class="time">10:00 AM – 9:00 PM</span>
+                        </div>
+                        <div class="hour-row">
+                            <span class="day">Saturday - Sunday</span>
+                            <span class="time">11:00 AM – 10:00 PM</span>
+                        </div>
+                        <div class="hour-row">
+                            <span class="day">Public Holidays</span>
+                            <span class="time">10:00 AM – 6:00 PM</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Map Section -->
+                <section class="shop-section">
+                    <h2>Location</h2>
+                    <div class="map-container">
+                        <div class="map-placeholder">
+                            <i class="fas fa-map-marked-alt"></i>
+                            <h3>Google Maps Preview</h3>
+                            <p>Interactive map would be displayed here</p>
+                            <button class="btn btn-primary">
+                                <i class="fas fa-external-link-alt"></i> Open in Google Maps
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Available Offers -->
+                <section class="shop-section">
+    <div class="section-header">
+        <h2>Available Offers</h2>
+        <span class="offers-count" id="offersCount">Loading offers...</span>
+    </div>
+    
+    <div class="shop-offers-grid" id="shopOffersGrid">
+        <!-- Offers will be loaded dynamically -->
+    </div>
+</section>
+
+                <!-- Customer Reviews -->
+                <section class="shop-section">
+    <div class="section-header">
+        <h2>Customer Reviews</h2>
+        <button class="btn btn-outline btn-sm" id="writeReviewBtn">
+            <i class="fas fa-pencil-alt"></i> Write Review
+        </button>
+    </div>
+    
+    <div class="reviews-container" id="reviewsContainer">
+        <!-- Reviews will be loaded dynamically -->
+    </div>
+</section>
+
+            <!-- Sidebar Column -->
+            <div class="shop-sidebar">
+                <!-- Contact Card -->
+                <div class="sidebar-card">
+                    <h3>Contact Information</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>+91 98765 43210</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>service@autocare.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-globe"></i>
+                            <span>www.autocareexample.com</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="sidebar-card">
+                    <h3>Quick Actions</h3>
+                    <div class="quick-actions">
+                        <button class="btn btn-primary btn-full">
+                            <i class="fas fa-phone"></i> Call Now
+                        </button>
+                        <button class="btn btn-outline btn-full">
+                            <i class="fas fa-share"></i> Share Shop
+                        </button>
+                        <button class="btn btn-outline btn-full">
+                            <i class="fas fa-flag"></i> Report Issue
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Similar Shops -->
+                <div class="sidebar-card">
+                    <h3>Similar Shops</h3>
+                    <div class="similar-shops">
+                        <div class="similar-shop">
+                            <div class="shop-avatar">
+                                <i class="fas fa-wrench"></i>
+                            </div>
+                            <div class="shop-info">
+                                <h4>Quick Auto Repair</h4>
+                                <p>2.1 km away</p>
+                            </div>
+                        </div>
+                        <div class="similar-shop">
+                            <div class="shop-avatar">
+                                <i class="fas fa-car"></i>
+                            </div>
+                            <div class="shop-info">
+                                <h4>Premium Car Care</h4>
+                                <p>3.5 km away</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>OfferHub</h3>
+                    <p>Free offers and shop locally with over 10,000 stores nationwide.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="offers.html">Offers</a></li>
+                        <li><a href="shops.html">Shops</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> support@offerhub.com</li>
+                        <li><i class="fas fa-phone"></i> +91 98765 43210</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Kalaburagi, Karnataka, India</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 OfferHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/shop-details.js"></script>
+</body>
+</html>
